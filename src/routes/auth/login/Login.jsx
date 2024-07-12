@@ -1,11 +1,20 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
+import axios from "../../../api";
+
 
 const { Title, Text } = Typography;
 
 const Login = () => {
   const onFinish = (values) => {
+    try {
+      const res  = axios.post("/users/login", values);
+      localStorage.getItem("token", res.data.token)
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
     console.log("Success:", values);
   };
   const onFinishFailed = (errorInfo) => {

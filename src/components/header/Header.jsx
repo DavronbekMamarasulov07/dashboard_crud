@@ -1,6 +1,6 @@
 import { AiOutlineMenuUnfold, AiOutlineMenuFold, AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai"; 
 import { Layout, Menu , Typography, Input, Button, Avatar } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { NAVIGATION } from '../../static/links';
 import "./Header.scss";
 
@@ -60,7 +60,7 @@ const HeaderComponent = ({headerType, setCollapsed, collapsed}) => {
             />}
             {
               headerType === "profile" &&
-              <a style={{ marginLeft: 24 }} href="https://ant.design">
+              <Link style={{ marginLeft: 24 }}  to={"/auth"}>
               <Avatar
                 style={{
                   backgroundColor: '#1677ff',
@@ -69,7 +69,7 @@ const HeaderComponent = ({headerType, setCollapsed, collapsed}) => {
                 K
               </Avatar>
               <Text style={{ marginLeft: 8, color: '#fff' }}>Kyle</Text>
-            </a>
+            </Link>
             }
         </Header>
         {headerType === "home" && <Outlet />}

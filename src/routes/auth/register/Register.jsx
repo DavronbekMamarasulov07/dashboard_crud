@@ -2,15 +2,25 @@ import { Button, Form, Input } from "antd";
 import { Typography } from "antd";
 import { Link } from "react-router-dom";
 
+import axios from "../../../api";
+
 const { Title, Text } = Typography;
 
 const Register = () => {
   const onFinish = (values) => {
+    try {
+      const res = axios.post("/users/register", values);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
     console.log("Success:", values);
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+
 
   return (
     <Form
@@ -81,7 +91,7 @@ const Register = () => {
         span: 16,
       }}
     >
-      <Button type="primary" htmlType="submit">
+      <Button onClick={() => onFinish()} type="primary" htmlType="submit">
         Register
       </Button>
     </Form.Item>
