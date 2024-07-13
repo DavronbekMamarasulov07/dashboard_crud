@@ -172,6 +172,7 @@ const DashboardContent = ({ title, data, loading }) => {
                         <Input defaultValue={updateProduct?.price} />
                     </Form.Item>
                     <Form.Item
+                        label="Product category"
                         name="category"
                         initialValue={updateProduct?.category}
                         rules={[{ required: true, message: 'Please select category' }]}
