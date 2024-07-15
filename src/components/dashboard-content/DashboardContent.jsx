@@ -36,7 +36,6 @@ const DashboardContent = ({ title, data, loading }) => {
     const onFinishUpdate = (values) => {
         try {
             axios.put(`/products/${updateProduct._id}`, values)
-            location.reload()
         } catch (error) {
             console.log(error)
         }
@@ -49,7 +48,7 @@ const DashboardContent = ({ title, data, loading }) => {
     const onFinishAdd = (values) => {
         try {
             axios.post(`/products/`, values)
-            location.reload()
+        
         } catch (error) {
             console.log(error)
         }
