@@ -2,6 +2,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { Typography } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../api";
+import { saveToLocalStorage } from "../../../utils";
 
 
 const { Title, Text } = Typography;
@@ -11,6 +12,7 @@ const Login = () => {
   const onFinish = async (values) => {
     try {
       const res  = await axios.post("/users/login", values);
+      console.log(res)
       localStorage.setItem("token", res.data.token);
       console.log(res.data);
       navigate("/profile")

@@ -9,7 +9,6 @@ import "./DashboardContent.scss";
 import TextArea from "antd/es/input/TextArea";
 
 
-localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY5MGY4ZWUxNjA0ZGZiYzk4ODY1N2ExIn0sImlhdCI6MTcyMDg1Mjk2NCwiZXhwIjoxNzIwODU2NTY0fQ.Tas4Q5w7B5FbOxHOgoGfbVHpg0y8C9ennuQpk_4Qbqc")
 
 const DashboardContent = ({ title, data, loading }) => {
     const [deleteProduct, setDeleteProduct] = useState(null);
@@ -98,6 +97,7 @@ const DashboardContent = ({ title, data, loading }) => {
                 loading={loading}
                 scroll={{
                     x: 1300,
+                    y: 500
                 }}
             />
             <Modal
