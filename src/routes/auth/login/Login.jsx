@@ -10,6 +10,7 @@ const Login = () => {
   const onFinish = async (values) => {
     try {
       const res  = await axios.post("/users/login", values);
+      localStorage.setItem("token", res.data.token);
       console.log(res.data);
     } catch (error) {
       console.log(error);
