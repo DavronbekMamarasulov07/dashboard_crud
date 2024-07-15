@@ -9,13 +9,13 @@ import "./DashboardContent.scss";
 import TextArea from "antd/es/input/TextArea";
 
 
-localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY4ZDJhOWM3OTYzZjc5N2YyNTQzMTFiIn0sImlhdCI6MTcyMDc4NjA1MiwiZXhwIjoxNzIwNzg5NjUyfQ.t-dgt3kyqXdIWg_4uUiVKNpaEnxFcUqbjrYhNPs6iQ8")
+localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY5MGY4ZWUxNjA0ZGZiYzk4ODY1N2ExIn0sImlhdCI6MTcyMDg1Mjk2NCwiZXhwIjoxNzIwODU2NTY0fQ.Tas4Q5w7B5FbOxHOgoGfbVHpg0y8C9ennuQpk_4Qbqc")
 
 const DashboardContent = ({ title, data, loading }) => {
     const [deleteProduct, setDeleteProduct] = useState(null);
     const [updateProduct, setUpdateProduct] = useState(null);
-    const [newProduct, setNewProduct] = useState(null);
     const [form] = Form.useForm();
+    const [newProduct, setNewProduct] = useState(null);
 
 
     const [open, setOpen] = useState(false);
@@ -24,11 +24,7 @@ const DashboardContent = ({ title, data, loading }) => {
     };
     const handleOk = async () => {
         try {
-            const res = await axios.delete(`/products/${deleteProduct._id}`, {
-                headers: {
-                    Authorization: `${localStorage.getItem("token")}`
-                }
-            });
+            const res = await axios.delete(`/products/${deleteProduct._id}`);
             location.reload()
         } catch (error) {
             console.log(error)
@@ -39,11 +35,7 @@ const DashboardContent = ({ title, data, loading }) => {
 
     const onFinishUpdate = (values) => {
         try {
-            axios.put(`/products/${updateProduct._id}`, values, {
-                headers: {
-                    Authorization: `${localStorage.getItem("token")}`
-                }
-            })
+            axios.put(`/products/${updateProduct._id}`, values)
             location.reload()
         } catch (error) {
             console.log(error)
@@ -56,11 +48,7 @@ const DashboardContent = ({ title, data, loading }) => {
 
     const onFinishAdd = (values) => {
         try {
-            axios.post(`/products/`, values, {
-                headers: {
-                    Authorization: `${localStorage.getItem("token")}`
-                }
-            })
+            axios.post(`/products/`, values)
             location.reload()
         } catch (error) {
             console.log(error)
@@ -172,6 +160,7 @@ const DashboardContent = ({ title, data, loading }) => {
                         <Input defaultValue={updateProduct?.price} />
                     </Form.Item>
                     <Form.Item
+                        label="Product category"
                         name="category"
                         initialValue={updateProduct?.category}
                         rules={[{ required: true, message: 'Please select category' }]}

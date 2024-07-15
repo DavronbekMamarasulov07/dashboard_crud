@@ -7,10 +7,9 @@ import axios from "../../../api";
 const { Title, Text } = Typography;
 
 const Login = () => {
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     try {
-      const res  = axios.post("/users/login", values);
-      localStorage.getItem("token", res.data.token)
+      const res  = await axios.post("/users/login", values);
       console.log(res.data);
     } catch (error) {
       console.log(error);

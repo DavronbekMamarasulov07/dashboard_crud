@@ -7,9 +7,9 @@ import axios from "../../../api";
 const { Title, Text } = Typography;
 
 const Register = () => {
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     try {
-      const res = axios.post("/users/register", values);
+      const res = await axios.post("/users/register", values);
       console.log(res);
     } catch (error) {
       console.log(error);
