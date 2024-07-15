@@ -1,16 +1,19 @@
 import { Button, Form, Input } from "antd";
 import { Typography } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "../../../api";
 
 const { Title, Text } = Typography;
 
 const Register = () => {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
+
     try {
       const res = await axios.post("/users/register", values);
       console.log(res);
+      navigate("/login")
     } catch (error) {
       console.log(error);
     }

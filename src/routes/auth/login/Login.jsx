@@ -1,17 +1,19 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { Typography } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../api";
 
 
 const { Title, Text } = Typography;
 
 const Login = () => {
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
       const res  = await axios.post("/users/login", values);
       localStorage.setItem("token", res.data.token);
       console.log(res.data);
+      navigate("/profile")
     } catch (error) {
       console.log(error);
     }
